@@ -7,18 +7,26 @@ use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model
 {
-    /** @use HasFactory<\Database\Factories\ProjectFactory> */
     use HasFactory;
 
-
     protected $fillable = [
-        'name',
+        'user_id',
+        'title',
         'description',
         'image',
-        'githubLink',
-        'demoLink',
-        'technologies', 
-        'isShown', 
-        ];
+        'github_link',
+        'demo_link',
+        'tech_stack',
+        'is_featured',
+    ];
 
+    protected $casts = [
+        'tech_stack' => 'array',
+        'is_featured' => 'boolean',
+    ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

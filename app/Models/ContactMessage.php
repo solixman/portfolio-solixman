@@ -5,16 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Contacts extends Model
+class ContactMessage extends Model
 {
-    /** @use HasFactory<\Database\Factories\ContactsFactory> */
     use HasFactory;
 
-  protected $fillable = [
+    protected $fillable = [
+        'user_id',
         'name',
         'email',
         'message',
-        'isRead',
+        'is_read',
     ];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

@@ -7,15 +7,22 @@ use Illuminate\Database\Eloquent\Model;
 
 class Experience extends Model
 {
-    /** @use HasFactory<\Database\Factories\ExperienceFactory> */
     use HasFactory;
-   protected $fillable = [
+
+    protected $fillable = [
+        'user_id',
         'company',
         'role',
         'description',
-        'startDate',
-        'endDate',
+        'start_date',
+        'end_date',
         'location',
     ];
 
+    protected $dates = ['start_date', 'end_date'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
