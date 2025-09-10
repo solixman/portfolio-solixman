@@ -9,3 +9,4 @@ Route::get('/', function () {
 
 
 Route::get('/portfolio',[PortfolioController::class,'index']);
+Route::get('/projects/{project}', [PortfolioController::class, 'showProject']);
