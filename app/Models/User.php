@@ -22,7 +22,7 @@ class User extends Authenticatable
         'portfolio_link',
     ];
 
-    // 🔹 Relations
+   
     public function skills()
     {
         return $this->hasMany(Skill::class);
@@ -45,6 +45,6 @@ class User extends Authenticatable
 
     public function contactMessages()
     {
-        return $this->hasMany(ContactMessage::class);
+        return $this->hasMany(ContactMessage::class);       
     }
 }
