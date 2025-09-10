@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Education;
+use App\Models\Project;
 use App\Models\Skill;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -18,5 +19,11 @@ class PortfolioController extends Controller
                 
             return view('dashboard',compact('user'));
         }
+
+
+    public function showProject($id){
+        $project = Project::find($id);
+        return view('project',compact('project'));
+    }
 
 }
