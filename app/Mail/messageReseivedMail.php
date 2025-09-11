@@ -1,61 +1,55 @@
-<?php
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New Portfolio Message</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f9f9f9;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #eee;
+            max-width: 600px;
+            margin: auto;
+        }
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        p {
+            margin: 8px 0;
+        }
+        .label {
+            font-weight: bold;
+            color: #444;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 13px;
+            color: #888;
+            border-top: 1px solid #eee;
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>📩 New Message from Portfolio</h2>
 
-namespace App\Mail;
+    <p><span class="label">From:</span> {{ $email }}</p>
 
-use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Mail\Mailable;
-use Illuminate\Mail\Mailables\Content;
-use Illuminate\Mail\Mailables\Envelope;
-use Illuminate\Queue\SerializesModels;
+    <p><span class="label">Message:</span></p>
+    <p>{{ $message }}</p>
 
-class messageReseivedMail extends Mailable
-{
-    use Queueable, SerializesModels;
-
-    /**
-     * Create a new message instance.
-     */
-
-    private string $name;
-    private string $email;
-    private string $message;
-
-    public function __construct($name, $email, $message)
-    {
-        $this->name=$name;
-        $this->email=$email;
-        $this->message=$message;
-    }
-
-    /**
-     * Get the message envelope.
-     */
-    public function envelope(): Envelope
-    {
-        return new Envelope(
-            subject: 'portfolio message from'. $this->name,
-        );
-    }
-
-    /**
-     * Get the message content definition.
-     */
-    public function content(): Content
-    {
-        return new Content(
-            view: 'contactMessage',
-            with:['email'=>$this->email,'message'=>$this->message]
-        );
-    }
-
-    /**
-     * Get the attachments for the message.
-     *
-     * @return array<int, \Illuminate\Mail\Mailables\Attachment>
-     */
-    public function attachments(): array
-    {
-        return [];
-    }
-}
+    <div class="footer">
+        This message was sent via your portfolio contact form.
+    </div>
+</div>
+</body>
+</html>

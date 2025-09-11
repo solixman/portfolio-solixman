@@ -25,13 +25,7 @@ class ContactController extends Controller
         'email'=>$data['email'],
         'message'=>$data['message'],
         ]);
-        Mail::raw(
-          "📩 New message from {$data['name']} ({$data['email']}):\n\n{$data['message']}",
-          function ($mail) use ($data) {
-            $mail->to('sousouja06@gmail.com') 
-            ->subject("New Portfolio Contact Message");
-          }
-        );
+       
         
         dd($contactMessage);
     return back()->with(['succes'=>'message was sent succesfully']);
