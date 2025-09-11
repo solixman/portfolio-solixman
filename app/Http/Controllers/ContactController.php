@@ -6,6 +6,8 @@ use App\Models\ContactMessage;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use App\Mail\messageReseivedMail;
+
 
 class ContactController extends Controller
 {
@@ -25,9 +27,10 @@ class ContactController extends Controller
         'email'=>$data['email'],
         'message'=>$data['message'],
         ]);
+
+        Mail::to('soulaymanjaa09@gmail.com')
+        ->send(new messageReseivedMail($contactMessage->name,$contactMessage->email,$contactMessage->message) ) ;
        
-        
-        dd($contactMessage);
     return back()->with(['succes'=>'message was sent succesfully']);
     } catch (Exception $e) {
         return $e->getMessage();
