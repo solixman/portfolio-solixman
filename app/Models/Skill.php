@@ -7,16 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Skill extends Model
 {
-    /** @use HasFactory<\Database\Factories\SkillFactory> */
     use HasFactory;
-      
 
-      protected $fillable = [
+    protected $fillable = [
+      
         'name',
-        'category',    
-        'level',      
+        'category',
+        'level',
         'icon',
     ];
 
-
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

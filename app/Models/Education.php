@@ -7,16 +7,24 @@ use Illuminate\Database\Eloquent\Model;
 
 class Education extends Model
 {
-    /** @use HasFactory<\Database\Factories\EducationFactory> */
     use HasFactory;
 
-   protected $fillable = [
+    protected $table = 'educations';
+
+    protected $fillable = [
+        'user_id',
         'institution',
         'degree',
-        'field',
-        'startDate',
-        'endDate',
+        'field_of_study',
+        'start_date',
+        'end_date',
         'description',
     ];
 
+    protected $dates = ['start_date', 'end_date'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
