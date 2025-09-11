@@ -21,7 +21,7 @@ class PortfolioController extends Controller
             $user = User::with('skills', 'projects', 'experiences', 'educations')->find(1);
             return view('dashboard', compact('user'));
         } catch (Exception $e) {
-        return back()->with(['error'=>'something went wrong']);
+        return $e->getMessage();
         }
         
     }

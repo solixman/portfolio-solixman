@@ -34,7 +34,7 @@ class messageReseivedMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'portfolio message from' . $this->name,
+            subject: 'portfolio message from ' . $this->name,
         );
     }
 
