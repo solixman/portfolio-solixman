@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ContactMessage;
+use Exception;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
@@ -16,8 +17,8 @@ class ContactController extends Controller
         'email'=>$request->email,
         'message'=>$request->message,
         ]);
-    
-    } catch (\Throwable $th) {
+    return back()->with(['succes'=>'message was sent succesfully']);
+    } catch (Exception $e) {
         return back()->with(['error'=>'something went wrong']);
     }
 
